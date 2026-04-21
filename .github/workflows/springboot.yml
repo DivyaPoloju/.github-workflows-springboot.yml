@@ -1,7 +1,7 @@
+name: Spring Boot CI (Gradle)
+
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -18,8 +18,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Give permission to gradlew
+        run: chmod +x gradlew
 
-      - name: Run tests
-        run: mvn test
+      - name: Build project
+        run: ./gradlew build
